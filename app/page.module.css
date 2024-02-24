@@ -1,0 +1,31 @@
+@keyframes fallAnimation {
+  from {
+    transform: translateX(-100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(
+      0vh
+    ); /* Adjust this value to the desired stopping point */
+    opacity: 1;
+  }
+}
+
+.fallAnimation {
+  animation: fallAnimation 1.5s;
+}
+
+@keyframes imageAnimation {
+  from {
+    transform: translateX(+100vh);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(2vh);
+    opacity: 1;
+  }
+}
+
+.imageAnimation {
+  animation: imageAnimation 1.5s; /* Corrected to match the keyframes name */
+}
