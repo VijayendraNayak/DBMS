@@ -1,11 +1,9 @@
 import React from "react";
 import { IoMdLogIn } from "react-icons/io";
 import styles from "./page.module.css"; // Import a CSS module for keyframes
-import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 const Page = () => {
-  const router = useRouter();
-
   return (
     <div className="flex h-screen">
       <div className={`flex flex-1 pl-4 ${styles.fallAnimation}`}>
@@ -20,15 +18,16 @@ const Page = () => {
               and streamline operations.
             </p>
           </div>
-          <div className="flex justify-center">
-            <button className="text-2xl gap-3 flex items-center justify-center text-white font-semibold p-4 bg-gradient-to-r from-black to-purple-500 rounded-full w-[300px] hover:opacity-80"
-            onClick={() => router.push('/pages/login')}>
+          <Link href="/pages/login">
+            <a className="text-2xl gap-3 flex items-center justify-center text-white font-semibold p-4 bg-gradient-to-r from-black to-purple-500 rounded-full w-[300px] hover:opacity-80">
               Login <IoMdLogIn />
-            </button>
-          </div>
+            </a>
+          </Link>
         </div>
       </div>
-      <div className={`flex-1 flex justify-center items-center ${styles.imageAnimation}`}>
+      <div
+        className={`flex-1 flex justify-center items-center ${styles.imageAnimation}`}
+      >
         <img
           src="https://imgs.search.brave.com/SuXH4PZLkIBTmN7PqOxLLPDF9zuNhAkAGllgOSxSOK4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ0/MTAwNzE4NS92aWRl/by9zaG9wcGluZy1z/dG9yZS1idWlsZGlu/Zy1saW5lLWNvbmNl/cHQtYW5pbWF0aW9u/LmpwZz9zPTY0MHg2/NDAmaz0yMCZjPXE0/OWM2TGZCZHhxR3h5/eXAwQnhsdDBTUDJo/cnpDemFObG84X1Fs/OGx4SHc9"
           alt="Animated Inventory"
