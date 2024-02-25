@@ -17,31 +17,16 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url('https://imgtr.ee/images/2024/02/25/acf6eeb82f439651776d9c44bec19061.jpeg');
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  background-repeat: no-repeat; /* Adjust as needed */
+  background-attachment: fixed; /* Keeps the background fixed when scrolling */
 }
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
-}
-@keyframes fallAnimation {
-  0% {
-    transform: translateY(-100vh);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.fallAnimation {
-  animation: fallAnimation 1.5s ease-in-out;
 }
