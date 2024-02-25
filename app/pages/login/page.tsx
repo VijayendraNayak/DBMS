@@ -20,8 +20,8 @@ const page = () => {
           <form action="" className="relative flex flex-col gap-4">
             <div className="relative">
               <input
-                type="text"
-                placeholder="Username"
+                type="email"
+                placeholder="Email"
                 className="shadow-lg rounded-full p-4 w-[400px] focus:outline-none"
               />
               <div className="absolute top-2 right-0 p-4">
