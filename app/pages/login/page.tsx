@@ -2,11 +2,13 @@ import React from "react";
 import { LuUserCircle2 } from "react-icons/lu";
 import { IoLockClosedOutline } from "react-icons/io5";
 import Link from "next/link";
+import './login.css';
+
 const page = () => {
   return (
-    <div className="py-16">
+    <div className=" py-16 fadeIn">
       <div
-        className="flex max-w-4xl mx-auto h-[450px]  bg-cover bg-center shadow-2xl"
+        className="flex max-w-4xl mx-auto h-[450px] bg-cover bg-center shadow-2xl"
         style={{
           backgroundImage:
             'url("https://imgtr.ee/images/2024/02/25/512b14c537f537e85d6417f7d35f3270.jpeg")',

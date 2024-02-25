@@ -2,9 +2,10 @@ import React from "react";
 import { LuUserCircle2 } from "react-icons/lu";
 import { IoLockClosedOutline } from "react-icons/io5";
 import Link from "next/link";
+import './register.css'
 const page = () => {
   return (
-    <div className="py-16">
+    <div className="py-16 fadeIn">
       <div
         className="flex max-w-4xl mx-auto h-[450px]  bg-cover bg-center shadow-2xl"
         style={{

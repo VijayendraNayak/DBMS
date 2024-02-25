@@ -19,7 +19,7 @@ const Page = () => {
             </p>
           </div>
           <Link href="/pages/login">
-            <div className="text-2xl gap-3 flex items-center justify-center text-white font-semibold p-4 bg-gradient-to-r from-black to-purple-500 rounded-full w-[300px] hover:opacity-80">
+            <div className="text-2xl gap-3 flex items-center justify-center text-white font-semibold p-4 bg-gradient-to-r from-purple-300 to-purple-600 rounded-full w-[300px] hover:opacity-80">
               Login <IoMdLogIn />
             </div>
           </Link>
