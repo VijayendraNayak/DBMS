@@ -1,10 +1,33 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { LuUserCircle2 } from "react-icons/lu";
-import { IoLockClosedOutline } from "react-icons/io5";
+import { IoMdEye } from "react-icons/io";
+import { IoMdEyeOff } from "react-icons/io";
 import Link from "next/link";
-import './login.css';
+import "./login.css";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
+  const [formdata, setFormdata] = useState<{ [key: string]: string }>({});
+  const [isvisible, setIsvisible] = useState<boolean>(false);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5000/api/verify_user", formdata);
+      console.log("User verified successfully");
+      router.push("/pages/dashboard");
+    } catch (error) {
+      console.log("Error verifying user: ", error);
+    }
+  };
+  const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormdata({ ...formdata, [e.target.id]: e.target.value });
+  };
+  const toggleEye = () => {
+    isvisible ? setIsvisible(false) : setIsvisible(true);
+  };
   return (
     <div className=" py-16 fadeIn">
       <div
@@ -23,6 +46,8 @@ const page = () => {
                 type="email"
                 placeholder="Email"
                 className="shadow-lg rounded-full p-4 w-[400px] focus:outline-none"
+                id="email"
+                onChange={handleChange}
               />
               <div className="absolute top-2 right-0 p-4">
                 <LuUserCircle2 />
@@ -30,25 +55,30 @@ const page = () => {
             </div>
             <div className="relative">
               <input
-                type="text"
+                type={isvisible?"text":"password"}
                 placeholder="Password"
                 className="shadow-lg rounded-full p-4 w-[400px] focus:outline-none"
+                id="password"
+                onChange={handleChange}
               />
-              <div className="absolute top-2 right-0 p-4">
-                <IoLockClosedOutline />
+              <div className="absolute top-2 right-0 p-4" onClick={toggleEye}>
+                {isvisible ? <IoMdEye /> : <IoMdEyeOff />}
               </div>
             </div>
           </form>
           <div className="flex flex-col gap-1">
-            <Link href={'/pages/dashboard'}>
-            <button className="text-white text-lg  p-2 bg-gradient-to-r from-purple-300 to-purple-600 shadow-xl rounded-full font-semibold px-20 hover:opacity-80">
-              Sign In
-            </button>
-            </Link>
+              <button
+                className="text-white text-lg  p-2 bg-gradient-to-r from-purple-300 to-purple-600 shadow-xl rounded-full font-semibold px-20 hover:opacity-80"
+                onClick={handleSubmit}
+              >
+                Sign In
+              </button>
             <div className="flex justify-center items-center gap-1">
               <p className="text-sm">Don't have an account?</p>
-              <Link href={'/pages/register'}>
-              <span className="text-md text-purple-600 font-semibold cursor-pointer hover:text-purple-800">Sign Up</span>
+              <Link href={"/pages/register"}>
+                <span className="text-md text-purple-600 font-semibold cursor-pointer hover:text-purple-800">
+                  Sign Up
+                </span>
               </Link>
             </div>
           </div>
