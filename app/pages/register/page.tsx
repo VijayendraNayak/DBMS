@@ -13,13 +13,20 @@ import {useRouter} from "next/navigation";
 const page = () => {
   const [formdata, setFormdata] = useState<{ [key: string]: string }>({});
   const [isvisible, setIsvisible] = useState<boolean>(false);
+  const [error, setError] = useState<string|undefined>('');
+
   const router=useRouter();
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('')
     try {
-      await axios.post("http://localhost:5000/api/add_user", formdata);
-      console.log("Data added successfully");
-      router.push("/pages/login")
+      const data= await axios.post("http://localhost:5000/api/verify_user", formdata);
+      if(data.data.success===false){
+       setError(data.data.message)
+       return
+     }
+     console.log("User verified successfully");
+     router.push("/pages/dashboard");
     } catch (error) {
       console.error("Error adding data:", error);
     }
@@ -95,6 +102,9 @@ const page = () => {
                   Sign In
                 </span>
               </Link>
+            </div>
+            <div className="text-red-500 font-semibold">
+              {error && error}
             </div>
           </div>
         </div>

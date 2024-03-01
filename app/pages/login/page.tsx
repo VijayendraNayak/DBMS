@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import React, { useState } from "react";
-import { LuUserCircle2 } from "react-icons/lu";
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import { MdOutlineEmail } from "react-icons/md";
 import Link from "next/link";
 import "./login.css";
 import axios from "axios";
@@ -12,10 +12,20 @@ const page = () => {
   const router = useRouter();
   const [formdata, setFormdata] = useState<{ [key: string]: string }>({});
   const [isvisible, setIsvisible] = useState<boolean>(false);
+  const [error, setError] = useState<String|undefined>('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
     try {
-      await axios.post("http://localhost:5000/api/verify_user", formdata);
+      const data = await axios.post(
+        "http://localhost:5000/api/verify_user",
+        formdata
+      );
+      if (data.data.success === false) {
+        setError(data.data.message);
+        return
+      }
       console.log("User verified successfully");
       router.push("/pages/dashboard");
     } catch (error) {
@@ -50,12 +60,12 @@ const page = () => {
                 onChange={handleChange}
               />
               <div className="absolute top-2 right-0 p-4">
-                <LuUserCircle2 />
+                <MdOutlineEmail />
               </div>
             </div>
             <div className="relative">
               <input
-                type={isvisible?"text":"password"}
+                type={isvisible ? "text" : "password"}
                 placeholder="Password"
                 className="shadow-lg rounded-full p-4 w-[400px] focus:outline-none"
                 id="password"
@@ -67,12 +77,12 @@ const page = () => {
             </div>
           </form>
           <div className="flex flex-col gap-1">
-              <button
-                className="text-white text-lg  p-2 bg-gradient-to-r from-purple-300 to-purple-600 shadow-xl rounded-full font-semibold px-20 hover:opacity-80"
-                onClick={handleSubmit}
-              >
-                Sign In
-              </button>
+            <button
+              className="text-white text-lg  p-2 bg-gradient-to-r from-purple-300 to-purple-600 shadow-xl rounded-full font-semibold px-20 hover:opacity-80"
+              onClick={handleSubmit}
+            >
+              Sign In
+            </button>
             <div className="flex justify-center items-center gap-1">
               <p className="text-sm">Don't have an account?</p>
               <Link href={"/pages/register"}>
@@ -81,6 +91,7 @@ const page = () => {
                 </span>
               </Link>
             </div>
+            <div className="text-red-500 font-semibold">{error && error}</div>
           </div>
         </div>
       </div>
