@@ -11,15 +11,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
-  const [isClosed, setIsClosed] = useState(true);
+  const [isClosed, setIsClosed] = useState<boolean>(true);
   const pathname = usePathname();
 
-  const handleToggleSidebar = () => {
+  const handleToggleSidebar = ():void => {
     setIsClosed(!isClosed);
   };
 
   return (
-    <div className="relative h-screen w-auto">
+    <div className="relative w-auto">
       {/* Backdrop overlay */}
       {!isClosed && (
         <div
@@ -55,11 +55,11 @@ const Header = () => {
           <div className="flex flex-col gap-4 ">
             <Link href="/pages/dashboard">
               <div
-                className={`flex items-center font-semibold py-2 px-2 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-5 text-lg gap-2 cursor-pointer hover:font-extrabold ${
                   isClosed && "justify-center "
                 } ${
                   pathname === "/pages/dashboard"
-                    ? "bg-white text-purple-600 rounded-l-full "
+                    ? "bg-white  text-purple-600 rounded-l-full "
                     : ""
                 }`}
               >
@@ -68,7 +68,7 @@ const Header = () => {
             </Link>
             <Link href="/pages/user">
               <div
-                className={`flex items-center font-semibold py-2 px-2 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-extrabold ${
                   isClosed && "justify-center "
                 } ${
                   pathname === "/pages/user"
@@ -81,7 +81,7 @@ const Header = () => {
             </Link>
             <Link href="/pages/brand">
               <div
-                className={`flex items-center font-semibold py-2 px-2 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-extrabold ${
                   isClosed && "justify-center "
                 } ${
                   pathname === "/pages/brand"
@@ -94,7 +94,7 @@ const Header = () => {
             </Link>
             <Link href="/pages/product">
               <div
-                className={`flex items-center font-semibold py-2 px-2 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-extrabold ${
                   isClosed && "justify-center"
                 } ${
                   pathname === "/pages/product"
