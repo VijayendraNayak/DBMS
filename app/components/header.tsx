@@ -23,7 +23,7 @@ const Header = () => {
       {/* Backdrop overlay */}
       {!isClosed && (
         <div
-          className="fixed top-0 left-0 w-full h-full bg-black opacity-50 z-50"
+          className="fixed top-0 left-0 w-full h-full z-50"
           onClick={handleToggleSidebar}
         />
       )}
@@ -55,7 +55,7 @@ const Header = () => {
           <div className="flex flex-col gap-4 ">
             <Link href="/pages/dashboard">
               <div
-                className={`flex items-center font-semibold p-5 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-bold ${
                   isClosed && "justify-center "
                 } ${
                   pathname === "/pages/dashboard"
@@ -68,7 +68,7 @@ const Header = () => {
             </Link>
             <Link href="/pages/user">
               <div
-                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-bold ${
                   isClosed && "justify-center "
                 } ${
                   pathname === "/pages/user"
@@ -81,7 +81,7 @@ const Header = () => {
             </Link>
             <Link href="/pages/brand">
               <div
-                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-bold ${
                   isClosed && "justify-center "
                 } ${
                   pathname === "/pages/brand"
@@ -94,7 +94,7 @@ const Header = () => {
             </Link>
             <Link href="/pages/product">
               <div
-                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-extrabold ${
+                className={`flex items-center font-semibold p-4 text-lg gap-2 cursor-pointer hover:font-bold ${
                   isClosed && "justify-center"
                 } ${
                   pathname === "/pages/product"
@@ -109,7 +109,7 @@ const Header = () => {
 
           {/* Close button */}
           <div
-            className={`flex items-center font-semibold text-lg gap-2 fixed bottom-0 left-0 p-4 cursor-pointer hover:font-extrabold  ${
+            className={`flex items-center font-semibold text-lg gap-2 fixed bottom-0 left-0 p-4 cursor-pointer hover:font-bold  ${
               isClosed && "hidden"
             }`}
             onClick={handleToggleSidebar}
